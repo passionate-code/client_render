@@ -39,10 +39,10 @@ function App() { // define functional component App
   ); /// return state value that contains array of json object fetched through backend API and rendered it as a list
 }
 
-function Bpp() {
-  return (<p>This is my second function</p>);
-} /
+//function Bpp() {
+//  return (<p>This is my second function</p>);
+//} /
 
-//export default App; // exports the App functinoal component
-export App;
-export Bpp;
+export default App; // exports the App functinoal component
+//export App;
+//export Bpp;
