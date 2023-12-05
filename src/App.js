@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'; // import React and React hooks: useState and useEffect
+import { useState, useEffect } from 'react'; // import React and React hooks: useState and useEffect
 import axios from 'axios';
+import Table from "./Table";
 
 function App() { // define functional component App
   const [data, setData] = useState([]); // set state value to null and assign to variable data and set state function to variable setData
@@ -35,7 +36,11 @@ function App() { // define functional component App
         ))}
       </ol>
     </div>
-  ); // return state value that contains array of json object fetched through backend API and rendered it as a list
+  ); /// return state value that contains array of json object fetched through backend API and rendered it as a list
 }
+
+export function B() {
+  return <p>This is my second function</p>;
+} /
 
 export default App; // exports the App functinoal component
