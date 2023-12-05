@@ -4,7 +4,7 @@ import axios from 'axios';
 function App() { // define functional component App
   const [data, setData] = useState([]); // set state value to null and assign to variable data and set state function to variable setData
   var axios_api = () => { // define axios_api function
-    var url = 'http://10.232.50.10:9000/'; // please change the ip address to the application host ip address
+    var url = 'https://test-nodejs-2bcf.onrender.com'; // please change the ip address to the application host ip address
     axios.get(url) // fetch response data via an axios call to the backend and return a promise object
       .then(response => setData(response.data)) // on success, state function setData  is used to assign json object from the http response to the state value data
       .catch(error => console.error(error)); // on reject, print error to console
