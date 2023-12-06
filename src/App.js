@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'; // import React and React hooks: useState and useEffect
+import React, { useMemo, useState, useEffect } from "react"; // import React and React hooks: useState and useEffect
 import axios from 'axios';
-//import Table from "./Table";
+import Table from "./Table";
+import "./App.css";
 
 //function App() { // define functional component App
 //  const [data, setData] = useState([]); // set state value to null and assign to variable data and set state function to variable setData
@@ -40,12 +41,57 @@ import axios from 'axios';
 //}
 
 function App() {
-  return <p>This is my FIRST function</p>;
+  const columns = useMemo(
+    () => [
+      {
+        Header: "TV Show",
+        columns: [
+          {
+            Header: "Name",
+            accessor: "show.name",
+          },
+          {
+            Header: "Type",
+            accessor: "show.type",
+          },
+        ],
+      },
+      {
+        Header: "Details",
+        columns: [
+          {
+            Header: "Language",
+            accessor: "show.language",
+          },
+          {
+            Header: "Genre(s)",
+            accessor: "show.genres",
+          },
+          {
+            Header: "Runtime",
+            accessor: "show.runtime",
+          },
+          {
+            Header: "Status",
+            accessor: "show.status",
+          },
+        ],
+      }
+    ],
+    []
+  );
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const result = await axios("https://api.tvmaze.com/search/shows?q=snow");
+      setData(result.data);
+    })();
+  }, []);
+  return (
+    <div className="App">
+      <Table columns={columns} data={data} />
+    </div>
+  );
 }
 
-function Bpp() {
-  return <p>This is my second function</p>;
-}
-
-export {App};
-export {Bpp};
+export default App;
