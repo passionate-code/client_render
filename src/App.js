@@ -40,6 +40,20 @@ import "./App.css";
 //  ); /// return state value that contains array of json object fetched through backend API and rendered it as a list
 //}
 
+const Genres = ({ values }) => {
+  return (
+    <>
+      {values.map((genre, idx) => {
+        return (
+          <span key={idx} className="badge">
+            {genre}
+          </span>
+        );
+      })}
+    </>
+  );
+};
+
 function App() {
   const columns = useMemo(
     () => [
@@ -66,10 +80,21 @@ function App() {
           {
             Header: "Genre(s)",
             accessor: "show.genres",
+            Cell: ({ cell: { value } }) => <Genres values={value} />  // Cell method to create a custom element 
           },
           {
             Header: "Runtime",
-            accessor: "show.runtime",
+            accessor: "show.runtime",       
+            Cell: ({ cell: { value } }) => {
+              const hour = Math.floor(value / 60);
+              const min = Math.floor(value % 60);
+              return (
+                <>
+                  {hour > 0 ? `${hour} hr${hour > 1 ? "s" : ""} ` : ""}
+                  {min > 0 ? `${min} min${min > 1 ? "s" : ""}` : ""}
+                </>
+              );
+            }
           },
           {
             Header: "Status",
