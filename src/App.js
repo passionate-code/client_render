@@ -46,7 +46,7 @@ const Genres = ({ values }) => {
     <>
       {values.map((genre, idx) => {
         return (
-          <span key={idx} className="badge">
+          <span key={idx} class="btn btn-primary">
             {genre}
           </span>
         );
