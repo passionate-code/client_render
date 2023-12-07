@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect } from "react"; // import React and
 import axios from 'axios';
 import Table from "./Table";
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
 //function App() { // define functional component App
 //  const [data, setData] = useState([]); // set state value to null and assign to variable data and set state function to variable setData
